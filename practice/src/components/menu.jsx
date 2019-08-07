@@ -9,18 +9,15 @@ function Menu() {
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNav">
-                    <ul className="navbar-nav">
-                        <li className="nav-item active">
-                            <a className="nav-link" href="#">Home <span className="sr-only">(current)</span></a>
-                        </li>
+                    <ul className="nav nav-pills nav-fill" id="pills-tab" role="tablist">
                         <li className="nav-item">
-                            <a className="nav-link" href="#">Features</a>
+                            <a className="nav-link active" id="pills-home-tab" href="#pills-home" role="tab" aria-selected="true">Home</a>
                         </li>
-                        <li className="nav-item">
-                            <a className="nav-link" href="#">Pricing</a>
+                        <li class="nav-item">
+                            <a className="nav-link" id="pills-profile-tab" href="#pills-profile" role="tab" aria-selected="false">Profile</a>
                         </li>
-                        <li className="nav-item">
-                            <a className="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>
+                        <li class="nav-item">
+                            <a className="nav-link" id="pills-contact-tab" href="#pills-contact" role="tab" aria-selected="false">Contact</a>
                         </li>
                     </ul>
                 </div>
