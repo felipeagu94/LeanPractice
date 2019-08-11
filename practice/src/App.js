@@ -4,42 +4,52 @@ import LateralBar from './components/lateralbar'
 import Cardtext from './components/card'
 import SearchBar from './components/Search'
 import 'antd/dist/antd.css'
-import { Row, Col, Icon } from 'antd'
+import { Row, Col, Icon, Button } from 'antd'
 
-function App() {
-  return (
-    <div>
-      <div className="container">
-        <Row>
-          <Col span={4} offset={2}>
-            <Icon type="amazon" style={{ fontSize: '30px' }} />
-          </Col>
-          <Col span={12} offset={3}>
-            <MenuBar />
-          </Col>
-        </Row>
-        <br/>
-        <Row>
-          <Col span={5}>
-            <LateralBar />
-          </Col>
-          <Col span={15} offset={1}>
-            <SearchBar/>
-            <br/>
-          </Col>          
-          <Col span={10} offset={1}>
-            <Cardtext />
-          </Col>
-          <Col span={10} offset={1}>
-            <Cardtext />
-          </Col>
-          <Col span={10} offset={1}>
-            <Cardtext />
-          </Col>
-        </Row>
+export default class App extends React.Component {
+  state = {
+    info: [],
+  }
+  AddInfo = () =>{
+    const newInfo = {Day: "Monday 10th 2:28 PM", City1: "Houston, TX, 3361", City2: "Atalanta, GA, 30123", Price: "$250.00"}
+    const info = [...this.state.info, newInfo]
+    this.setState({ info })
+  }
+  render() {
+    const { info } = this.state
+    return (
+      <div>
+        <div className="container">
+          <Row>
+            <Col span={4} offset={2}>
+              <Icon type="amazon" style={{ fontSize: '30px' }} />
+            </Col>
+            <Col span={15} offset={1}>
+              <MenuBar />
+            </Col>
+          </Row>
+          <br />
+          <Row>
+            <Col span={5}>
+              <LateralBar />
+            </Col>
+            <Col span={15} offset={1}>
+              <SearchBar />
+              <br />
+            </Col>
+            {info.map((infoDel, i) =>
+              <Col span={10} offset={1}>
+                <Cardtext key={i} info={infoDel} />
+              </Col>
+            )}
+          </Row>
+          <Row>
+            <Col style={{ float: 'right' }}>
+              <Button type="link" onClick={this.AddInfo}><Icon type="plus" style={{ fontSize: '30px' }} /></Button>
+            </Col>
+          </Row>
+        </div>
       </div>
-    </div>
-  )
+    )
+  }
 }
-
-export default App
