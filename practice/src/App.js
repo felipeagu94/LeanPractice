@@ -9,10 +9,18 @@ import { Row, Col, Icon, Button } from 'antd'
 export default class App extends React.Component {
   state = {
     info: [],
+    fav: []
   }
   AddInfo = () =>{
-    const newInfo = {Day: "Monday 10th 2:28 PM", City1: "Houston, TX, 3361", City2: "Atalanta, GA, 30123", Price: "$250.00"}
+    const newInfo = {Day: "Monday 10th 2:28 PM", City1: "Houston, TX, 3361", City2: "Atalanta, GA, 30123", Price: "$250.00", fav: false}
     const info = [...this.state.info, newInfo]
+    this.setState({ info })
+  }
+  clicFav = (infoFav) =>{
+    const info = this.state.info.map(c => {
+      if(c === infoFav) c.fav = !c.fav
+      return c
+    })
     this.setState({ info })
   }
   render() {
@@ -38,8 +46,8 @@ export default class App extends React.Component {
               <br />
             </Col>
             {info.map((infoDel, i) =>
-              <Col span={10} offset={1}>
-                <Cardtext key={i} info={infoDel} />
+              <Col span={10} offset={1} key={i}>
+                <Cardtext info={infoDel} clicFav={this.clicFav} />
               </Col>
             )}
           </Row>

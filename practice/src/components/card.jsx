@@ -1,8 +1,10 @@
 import React from 'react'
-import { Card, Row, Col, Icon, Layout } from 'antd'
+import { Card, Row, Col, Icon, Layout, Button } from 'antd'
 const { Content } = Layout;
-
-const Cardtext = ({info}) => {
+const Cardtext = ({info, clicFav}) => {
+    const sendFav = () => {
+        clicFav(info)
+    }
     return (
         <div>
             <Row>
@@ -22,7 +24,9 @@ const Cardtext = ({info}) => {
                             </Col>
                             <Col span={2} className="justify-content-center">
                                 <div>
-                                    <Icon type="pushpin" style={{ fontSize: '30px' }} />
+                                    <Button onClick={sendFav} type="link" ghost>
+                                        <Icon type="pushpin" style={{ fontSize: '30px' }} theme={info.fav ? 'twoTone' : ''} />
+                                    </Button>
                                 </div>
                             </Col>
                             <Col span={6}>
