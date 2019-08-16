@@ -3,16 +3,16 @@ import MenuBar from './components/menu'
 import LateralBar from './components/lateralbar'
 import Cardtext from './components/card'
 import SearchBar from './components/Search'
+import NewCard from './components/Newcard'
 import 'antd/dist/antd.css'
-import { Row, Col, Icon, Button } from 'antd'
+import { Row, Col, Icon } from 'antd'
 
 export default class App extends React.Component {
   state = {
     info: [],
     fav: []
   }
-  AddInfo = () =>{
-    const newInfo = {Day: "Monday 10th 2:28 PM", City1: "Houston, TX, 3361", City2: "Atalanta, GA, 30123", Price: "$250.00", fav: false}
+  AddInfo = (newInfo) =>{
     const info = [...this.state.info, newInfo]
     this.setState({ info })
   }
@@ -53,7 +53,7 @@ export default class App extends React.Component {
           </Row>
           <Row>
             <Col style={{ float: 'right' }}>
-              <Button type="link" onClick={this.AddInfo}><Icon type="plus" style={{ fontSize: '30px' }} /></Button>
+              <NewCard save={this.AddInfo}/>
             </Col>
           </Row>
         </div>
